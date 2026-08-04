@@ -1,13 +1,30 @@
-# NeoVitaDB Catalog
+# NeoVitaDB Catalog — Test
 
-The homebrew list behind [NeoVitaDB Downloader](https://github.com/robin994/NeoVitaDB-Downloader).
+This is the **staging catalog** for [NeoVitaDB Downloader](https://github.com/robin994/NeoVitaDB-Downloader),
+a copy of [NeoVitaDB-Catalog](https://github.com/robin994/NeoVitaDB-Catalog) (the
+official, default catalog) that exists to take pull requests with a lower bar
+than the official one. It is **not** the catalog NeoVitaDB Downloader uses by
+default — nobody is exposed to an entry here just because it got merged.
 
-There is no server. This repository *is* the database: every homebrew is one small
-JSON file pointing at the GitHub repository that publishes it. A scheduled workflow
-resolves each project's latest release and generates the static files the app
-downloads. Binaries stay with their authors — the catalog only ever stores metadata.
+Entries land here first. Once one has been used for a while without any report
+of trouble, it gets promoted with a PR copying its `apps/<platform>/*.json`
+file (and icon) over to the official catalog, where it then reaches every
+user. Promotion is manual and at the official catalog's maintainer's
+discretion — merged here is not the same as trusted there.
 
-Published at `https://robin994.github.io/NeoVitaDB-Catalog/`.
+If you want to actually use this catalog yourself (to try entries before
+they're promoted), add its URL to `catalogs.cfg` on your device:
+
+```
+Test|https://robin994.github.io/NeoVitaDB-Catalog-Test
+```
+
+See `ux0:data/NeoVitaDB/catalogs.cfg` on-device, or `catalogs.cfg.example` in
+the NeoVitaDB Downloader repo, for the file's format.
+
+Everything below is otherwise identical to the official catalog's own
+documentation — same schema, same build, same rules — just published at
+`https://robin994.github.io/NeoVitaDB-Catalog-Test/` instead.
 
 ## Adding your homebrew
 
