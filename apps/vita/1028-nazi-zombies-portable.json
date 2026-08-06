@@ -15,5 +15,5 @@
   "trophies": false,
   "ai": false,
   "data": "https://files.coolatoms.org/nzp-data.zip",
-  "trusted": true
+  "trusted": false
 }
