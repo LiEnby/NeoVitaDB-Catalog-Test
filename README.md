@@ -12,6 +12,23 @@ file (and icon) over to the official catalog, where it then reaches every
 user. Promotion is manual and at the official catalog's maintainer's
 discretion — merged here is not the same as trusted there.
 
+For the maintainer, `tools/promote.py` automates that copy: it finds every
+entry that exists here but not yet in a sibling checkout of the official
+catalog, copies each one's JSON and icon over, validates the result against
+the official catalog's own schema (rolling back if that fails), and creates
+one commit listing every promoted entry by name. It never touches an entry
+that already exists in both (even if it has drifted) and never pushes unless
+told to:
+
+```
+python tools/promote.py              # promote + commit locally
+python tools/promote.py --dry-run    # show what would be promoted
+python tools/promote.py --push       # promote, commit, and push
+```
+
+It assumes the official catalog is checked out as a sibling directory named
+`NeoVitaDB-Catalog`; pass `--prod-dir` to point elsewhere.
+
 If you want to actually use this catalog yourself (to try entries before
 they're promoted), add its URL to `catalogs.cfg` on your device:
 
