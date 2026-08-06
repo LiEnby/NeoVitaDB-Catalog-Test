@@ -49,11 +49,15 @@ hand for it.
 
 The one exception is `trusted`: unlike the fields above, it *is* written into
 your `apps/<platform>/NNNN-your-slug.json`, but not by you. Every build
-recomputes it from your repository's GitHub star count (currently more than
-50) and, when it changes, rewrites the field in place and commits it back —
-same mechanism as `cache/hashes.json`. Setting it yourself in a PR has no
-lasting effect; the next scheduled build overwrites it with the real star
-count.
+recomputes it from `trusted_authors.json` (root of this repo) — `trusted` is
+true when your `author` field exactly matches an entry there — and, when it
+changes, rewrites the field in place and commits it back — same mechanism as
+`cache/hashes.json`. Setting it yourself in a PR has no lasting effect; the
+next scheduled build overwrites it with the real whitelist check. To get
+listed, open a PR adding your name to `trusted_authors.json`.
+
+Your repository's GitHub star count is also published on each entry as
+`likes` — a read-only, build-computed counter, unrelated to `trusted`.
 
 ```json
 {

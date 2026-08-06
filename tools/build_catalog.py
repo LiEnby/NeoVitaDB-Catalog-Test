@@ -3,8 +3,8 @@
 
 For every entry this resolves the latest GitHub release, picks the asset, and
 derives the fields the app cannot compute for itself: version, date, size,
-download count, the MD5 checksums used for update detection, and a trust flag
-from the repository's star count.
+download count, the MD5 checksums used for update detection, a like count
+from the repository's star count, and a trust flag from trusted_authors.json.
 
 The output format is dictated by the on-device parser, which is not a JSON
 parser: get_value_from_json() in source/database.cpp walks the text with strstr
@@ -37,6 +37,7 @@ CACHE_FILE = ROOT / "cache" / "hashes.json"
 DOWNLOADS_CACHE_FILE = ROOT / "cache" / "downloads.json"
 SCHEMA_FILE = ROOT / "schema" / "app.schema.json"
 CATEGORIES_FILE = ROOT / "categories.json"
+TRUSTED_AUTHORS_FILE = ROOT / "trusted_authors.json"
 
 API = "https://api.github.com"
 TOKEN = os.environ.get("GITHUB_TOKEN", "")
@@ -52,11 +53,8 @@ FIELD_ORDER = [
     "screenshots", "long_description", "downloads", "source", "release_page",
     "trailer", "size", "data_size", "hash", "hash2", "requirements",
     "trophies", "ai", "data", "url", "changelog", "trusted", "folder",
-    "direct", "added",
+    "direct", "added", "likes",
 ]
-
-# A repo needs more stars than this to be flagged trusted.
-TRUSTED_STARS = 50
 
 # Engine loaders keep eboot.bin identical across releases, so the app also
 # checksums the engine's main asset. Kept in sync with aux_main_files in
@@ -101,6 +99,12 @@ def repo_stars(repo: str) -> int:
         log(f"  ! {repo}: repo info unavailable ({e.code})")
         return 0
     return info.get("stargazers_count", 0)
+
+
+def load_trusted_authors() -> set[str]:
+    if not TRUSTED_AUTHORS_FILE.exists():
+        return set()
+    return set(json.loads(TRUSTED_AUTHORS_FILE.read_text())["authors"])
 
 
 def head_size(url: str) -> int:
@@ -374,6 +378,7 @@ def build() -> None:
 
     cache = load_cache()
     downloads_cache = load_downloads_cache()
+    trusted_authors = load_trusted_authors()
     out = {"vita": [], "psp": []}
     icons = []
 
@@ -476,10 +481,11 @@ def build() -> None:
         type_num = categories[entry["category"]] + (10 if is_psp else 0)
 
         data_url = entry.get("data", "")
-        # No GitHub repo means no stars to check - an external host has no
-        # equivalent signal, so it just starts untrusted rather than paying
-        # for an API call that would 404 anyway.
-        trusted = repo_stars(repo) > TRUSTED_STARS if repo else False
+        # No GitHub repo means no stars to show - an external host has no
+        # equivalent signal, so it just shows zero rather than paying for an
+        # API call that would 404 anyway.
+        likes = repo_stars(repo) if repo else 0
+        trusted = entry["author"] in trusted_authors
         if "trusted" not in entry or entry["trusted"] != trusted:
             entry["trusted"] = trusted
             path.write_text(json.dumps(entry, indent=2, ensure_ascii=False) + "\n")
@@ -514,6 +520,7 @@ def build() -> None:
             "folder": folder,
             "direct": "1" if direct_url else "0",
             "added": added_date(path),
+            "likes": str(likes),
         }
 
         out["psp" if is_psp else "vita"].append(emit_entry(fields, is_psp))

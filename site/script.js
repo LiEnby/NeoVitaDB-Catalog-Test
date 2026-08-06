@@ -182,7 +182,10 @@ function cardHtml(item, index) {
     <div class="badges">${platformBadge}<span class="badge badge-cat">${glyphSvg(item.category)}${escapeHtml(item.category)}</span>${trusted}${ai}${direct}</div>
     <p class="card-description">${description}</p>
     <div class="card-meta">
-      <span class="dl"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${fmtNum(item.downloads)}</span>
+      <div class="counters">
+        <span class="dl"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${fmtNum(item.downloads)}</span>
+        <span class="dl likes"><svg viewBox="0 0 24 24" fill="none"><path d="M12 17.3l-5.4 3 1.4-6-4.6-4 6-.5L12 4l2.6 5.8 6 .5-4.6 4 1.4 6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${fmtNum(item.likes)}</span>
+      </div>
       <span class="ver">${escapeHtml(item.version) || "—"}</span>
     </div>
   </article>`;
@@ -223,6 +226,7 @@ function openModal(item) {
   const specs = [
     spec("Version", escapeHtml(item.version) || "—"),
     spec("Downloads", fmtNum(item.downloads)),
+    spec("Likes", fmtNum(item.likes)),
     spec("Released", fmtDate(item.date)),
     spec("Size", fmtSize(item.size)),
     item.titleid ? spec("Title ID", escapeHtml(item.titleid), true) : "",

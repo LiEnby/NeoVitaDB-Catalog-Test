@@ -58,8 +58,8 @@ jobs:
 
       # On pull requests we stop here: the build having succeeded is the check.
       # Besides the checksum cache, the build also rewrites each entry's
-      # "trusted" flag in apps/*.json in place when its star count crosses
-      # TRUSTED_STARS, and it tracks lifetime download totals in
+      # "trusted" flag in apps/*.json in place when its author's membership in
+      # trusted_authors.json changes, and it tracks lifetime download totals in
       # cache/downloads.json (see accumulate_downloads() in build_catalog.py) -
       # both need committing back too, or the next run loses the running state.
       - name: Commit refreshed caches and trust flags

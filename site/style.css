@@ -269,6 +269,7 @@ button { font-family: inherit; }
 .glyph-dot { width: 9px; height: 9px; display: inline-block; flex-shrink: 0; }
 
 .card-meta { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line-soft); font-size: 12px; color: var(--muted); }
+.card-meta .counters { display: flex; align-items: center; gap: 10px; }
 .card-meta .dl { display: inline-flex; align-items: center; gap: 5px; }
 .card-meta .dl svg { width: 13px; height: 13px; }
 .card-meta .ver { font-family: var(--font-mono); color: #9fb0cd; font-size: 11px; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

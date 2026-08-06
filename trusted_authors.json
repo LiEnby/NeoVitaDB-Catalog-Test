@@ -1,0 +1,4 @@
+{
+  "$comment": "GitHub usernames considered trusted authors. Read by tools/build_catalog.py: an entry is trusted when its \"author\" field exactly matches one of these (case-sensitive). Edit via PR, same as categories.json - the next build picks it up and rewrites the affected entries' \"trusted\" field in place.",
+  "authors": []
+}

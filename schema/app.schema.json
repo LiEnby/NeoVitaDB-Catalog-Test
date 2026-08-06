@@ -126,7 +126,7 @@
       "default": false
     },
     "trusted": {
-      "description": "Whether the repository has more than TRUSTED_STARS GitHub stars. Written by tools/build_catalog.py itself on every run; do not set this by hand, a scheduled build overwrites it.",
+      "description": "Whether this entry's author is listed in trusted_authors.json. Written by tools/build_catalog.py itself on every run; do not set this by hand, a scheduled build overwrites it.",
       "type": "boolean",
       "default": false
     }
