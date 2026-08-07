@@ -10,9 +10,9 @@
     "tag": "v0.1"
   },
   "vita:1": {
-    "base_total": 15954,
-    "release_downloads": 2542,
-    "tag": "v.2.8.1"
+    "base_total": 18496,
+    "release_downloads": 0,
+    "tag": "v2.8.2"
   },
   "vita:1013": {
     "base_total": 0,
@@ -71,7 +71,7 @@
   },
   "vita:1028": {
     "base_total": 0,
-    "release_downloads": 74,
+    "release_downloads": 81,
     "tag": "nightly"
   },
   "vita:1030": {
@@ -121,7 +121,7 @@
   },
   "vita:1040": {
     "base_total": 0,
-    "release_downloads": 226,
+    "release_downloads": 227,
     "tag": "v.1.0"
   },
   "vita:1042": {
@@ -181,12 +181,12 @@
   },
   "vita:1059": {
     "base_total": 0,
-    "release_downloads": 382,
+    "release_downloads": 383,
     "tag": "v.1.3.1"
   },
   "vita:1060": {
     "base_total": 0,
-    "release_downloads": 543,
+    "release_downloads": 544,
     "tag": "v.1.1"
   },
   "vita:1061": {
@@ -281,7 +281,7 @@
   },
   "vita:1121": {
     "base_total": 0,
-    "release_downloads": 346,
+    "release_downloads": 347,
     "tag": "v.1.0-ls"
   },
   "vita:1131": {
@@ -316,7 +316,7 @@
   },
   "vita:1164": {
     "base_total": 0,
-    "release_downloads": 66694,
+    "release_downloads": 66699,
     "tag": "v1.6.0"
   },
   "vita:1166": {
@@ -346,7 +346,7 @@
   },
   "vita:1172": {
     "base_total": 0,
-    "release_downloads": 595,
+    "release_downloads": 597,
     "tag": "v.7.10.0-vita.1"
   },
   "vita:1173": {
@@ -431,7 +431,7 @@
   },
   "vita:12": {
     "base_total": 0,
-    "release_downloads": 6582,
+    "release_downloads": 6583,
     "tag": "vita-1.7"
   },
   "vita:1200": {
@@ -471,7 +471,7 @@
   },
   "vita:1217": {
     "base_total": 0,
-    "release_downloads": 668,
+    "release_downloads": 670,
     "tag": "v.1.0"
   },
   "vita:1218": {
@@ -486,7 +486,7 @@
   },
   "vita:1220": {
     "base_total": 0,
-    "release_downloads": 1401,
+    "release_downloads": 1403,
     "tag": "0.9.4"
   },
   "vita:1222": {
@@ -586,7 +586,7 @@
   },
   "vita:1258": {
     "base_total": 0,
-    "release_downloads": 1858,
+    "release_downloads": 1860,
     "tag": "0.9.3"
   },
   "vita:1259": {
@@ -611,7 +611,7 @@
   },
   "vita:1269": {
     "base_total": 0,
-    "release_downloads": 1276,
+    "release_downloads": 1278,
     "tag": "vita-1"
   },
   "vita:1270": {
@@ -626,7 +626,7 @@
   },
   "vita:1276": {
     "base_total": 0,
-    "release_downloads": 2211,
+    "release_downloads": 2213,
     "tag": "v.1.2"
   },
   "vita:1278": {
@@ -771,7 +771,7 @@
   },
   "vita:1320": {
     "base_total": 0,
-    "release_downloads": 1886,
+    "release_downloads": 1888,
     "tag": "1.0"
   },
   "vita:1322": {
@@ -806,12 +806,12 @@
   },
   "vita:1344": {
     "base_total": 0,
-    "release_downloads": 1356,
+    "release_downloads": 1360,
     "tag": "psvita2"
   },
   "vita:1345": {
     "base_total": 0,
-    "release_downloads": 1356,
+    "release_downloads": 1360,
     "tag": "psvita2"
   },
   "vita:1346": {
@@ -866,7 +866,7 @@
   },
   "vita:1356": {
     "base_total": 0,
-    "release_downloads": 793,
+    "release_downloads": 794,
     "tag": "v3.0.2"
   },
   "vita:1357": {
@@ -931,7 +931,7 @@
   },
   "vita:1374": {
     "base_total": 0,
-    "release_downloads": 121,
+    "release_downloads": 123,
     "tag": "v1.1.0-vita"
   },
   "vita:1375": {
@@ -951,7 +951,7 @@
   },
   "vita:1381": {
     "base_total": 0,
-    "release_downloads": 1851,
+    "release_downloads": 1852,
     "tag": "v0.4.1"
   },
   "vita:1383": {
@@ -961,7 +961,7 @@
   },
   "vita:1384": {
     "base_total": 0,
-    "release_downloads": 1879,
+    "release_downloads": 1881,
     "tag": "v.1.2"
   },
   "vita:1385": {
@@ -976,12 +976,12 @@
   },
   "vita:1387": {
     "base_total": 0,
-    "release_downloads": 1380,
+    "release_downloads": 1382,
     "tag": "v.1.2"
   },
   "vita:1388": {
     "base_total": 0,
-    "release_downloads": 2209,
+    "release_downloads": 2211,
     "tag": "v.1.0"
   },
   "vita:1390": {
@@ -991,12 +991,12 @@
   },
   "vita:1392": {
     "base_total": 0,
-    "release_downloads": 96,
+    "release_downloads": 97,
     "tag": "v2.1"
   },
   "vita:1393": {
     "base_total": 0,
-    "release_downloads": 1606,
+    "release_downloads": 1608,
     "tag": "v.1.1"
   },
   "vita:1394": {
@@ -1016,12 +1016,12 @@
   },
   "vita:1398": {
     "base_total": 0,
-    "release_downloads": 149,
+    "release_downloads": 151,
     "tag": "0.3"
   },
   "vita:1399": {
     "base_total": 0,
-    "release_downloads": 305,
+    "release_downloads": 307,
     "tag": "v.0.8"
   },
   "vita:1400": {
@@ -1031,7 +1031,7 @@
   },
   "vita:1401": {
     "base_total": 0,
-    "release_downloads": 1249,
+    "release_downloads": 1250,
     "tag": "v0.6.1"
   },
   "vita:1403": {
@@ -1041,7 +1041,7 @@
   },
   "vita:1404": {
     "base_total": 0,
-    "release_downloads": 129,
+    "release_downloads": 131,
     "tag": "1.0.0"
   },
   "vita:1406": {
@@ -1051,7 +1051,7 @@
   },
   "vita:1411": {
     "base_total": 0,
-    "release_downloads": 2245,
+    "release_downloads": 2247,
     "tag": "v1.1.0"
   },
   "vita:1413": {
@@ -1061,7 +1061,7 @@
   },
   "vita:1414": {
     "base_total": 0,
-    "release_downloads": 162,
+    "release_downloads": 164,
     "tag": "v1.0"
   },
   "vita:1415": {
@@ -1091,7 +1091,7 @@
   },
   "vita:1421": {
     "base_total": 0,
-    "release_downloads": 224,
+    "release_downloads": 226,
     "tag": "AlephOneVita1.4"
   },
   "vita:1422": {
@@ -1136,7 +1136,7 @@
   },
   "vita:1433": {
     "base_total": 0,
-    "release_downloads": 636,
+    "release_downloads": 638,
     "tag": "v.1.1"
   },
   "vita:1434": {
@@ -1161,12 +1161,12 @@
   },
   "vita:1438": {
     "base_total": 0,
-    "release_downloads": 2680,
+    "release_downloads": 2682,
     "tag": "v0.1.8"
   },
   "vita:1439": {
     "base_total": 0,
-    "release_downloads": 792,
+    "release_downloads": 794,
     "tag": "v0.64"
   },
   "vita:1440": {
@@ -1201,7 +1201,7 @@
   },
   "vita:1448": {
     "base_total": 0,
-    "release_downloads": 60656,
+    "release_downloads": 60663,
     "tag": "2.18"
   },
   "vita:1449": {
@@ -1226,7 +1226,7 @@
   },
   "vita:1452": {
     "base_total": 0,
-    "release_downloads": 184,
+    "release_downloads": 189,
     "tag": "continuous"
   },
   "vita:1453": {
@@ -1376,7 +1376,7 @@
   },
   "vita:200": {
     "base_total": 0,
-    "release_downloads": 3120,
+    "release_downloads": 3121,
     "tag": "0.33hgit-rsn8887"
   },
   "vita:203": {
@@ -1396,7 +1396,7 @@
   },
   "vita:21": {
     "base_total": 0,
-    "release_downloads": 422026,
+    "release_downloads": 422027,
     "tag": "v2.02"
   },
   "vita:238": {
@@ -1446,7 +1446,7 @@
   },
   "vita:299": {
     "base_total": 0,
-    "release_downloads": 5519,
+    "release_downloads": 5520,
     "tag": "0.3-vita"
   },
   "vita:303": {
@@ -1461,7 +1461,7 @@
   },
   "vita:327": {
     "base_total": 0,
-    "release_downloads": 7545,
+    "release_downloads": 7547,
     "tag": "1.0"
   },
   "vita:332": {
@@ -1521,7 +1521,7 @@
   },
   "vita:369": {
     "base_total": 0,
-    "release_downloads": 2662,
+    "release_downloads": 2663,
     "tag": "1.16"
   },
   "vita:370": {
@@ -1551,12 +1551,12 @@
   },
   "vita:386": {
     "base_total": 0,
-    "release_downloads": 4476,
+    "release_downloads": 4478,
     "tag": "1.15"
   },
   "vita:387": {
     "base_total": 0,
-    "release_downloads": 4476,
+    "release_downloads": 4478,
     "tag": "1.15"
   },
   "vita:392": {
@@ -1671,7 +1671,7 @@
   },
   "vita:47": {
     "base_total": 0,
-    "release_downloads": 493550,
+    "release_downloads": 493551,
     "tag": "v7"
   },
   "vita:475": {
@@ -1766,12 +1766,12 @@
   },
   "vita:553": {
     "base_total": 0,
-    "release_downloads": 69424,
+    "release_downloads": 69426,
     "tag": "Nightly"
   },
   "vita:558": {
     "base_total": 0,
-    "release_downloads": 35560,
+    "release_downloads": 35561,
     "tag": "v2.1.0"
   },
   "vita:560": {
@@ -1801,7 +1801,7 @@
   },
   "vita:572": {
     "base_total": 0,
-    "release_downloads": 4763,
+    "release_downloads": 4764,
     "tag": "v0.8.8-vita.7"
   },
   "vita:574": {
@@ -1821,7 +1821,7 @@
   },
   "vita:583": {
     "base_total": 0,
-    "release_downloads": 105536,
+    "release_downloads": 105537,
     "tag": "latest"
   },
   "vita:584": {
@@ -1841,7 +1841,7 @@
   },
   "vita:600": {
     "base_total": 0,
-    "release_downloads": 122089,
+    "release_downloads": 122093,
     "tag": "1.5.5"
   },
   "vita:601": {
@@ -1881,7 +1881,7 @@
   },
   "vita:612": {
     "base_total": 0,
-    "release_downloads": 26805,
+    "release_downloads": 26806,
     "tag": "r4"
   },
   "vita:617": {
@@ -1891,7 +1891,7 @@
   },
   "vita:618": {
     "base_total": 0,
-    "release_downloads": 223250,
+    "release_downloads": 223251,
     "tag": "v2.1"
   },
   "vita:619": {
@@ -1951,7 +1951,7 @@
   },
   "vita:642": {
     "base_total": 0,
-    "release_downloads": 110191,
+    "release_downloads": 110192,
     "tag": "1.0.0"
   },
   "vita:643": {
@@ -1991,12 +1991,12 @@
   },
   "vita:658": {
     "base_total": 0,
-    "release_downloads": 595,
+    "release_downloads": 597,
     "tag": "v.7.10.0-vita.1"
   },
   "vita:663": {
     "base_total": 0,
-    "release_downloads": 3615,
+    "release_downloads": 3616,
     "tag": "v1.4"
   },
   "vita:664": {
@@ -2006,7 +2006,7 @@
   },
   "vita:670": {
     "base_total": 0,
-    "release_downloads": 51241,
+    "release_downloads": 51242,
     "tag": "v1.2.3"
   },
   "vita:671": {
@@ -2021,7 +2021,7 @@
   },
   "vita:676": {
     "base_total": 0,
-    "release_downloads": 116328,
+    "release_downloads": 116329,
     "tag": "v1.0"
   },
   "vita:680": {
@@ -2046,7 +2046,7 @@
   },
   "vita:717": {
     "base_total": 0,
-    "release_downloads": 1986,
+    "release_downloads": 1987,
     "tag": "v3.3.2-vita.3"
   },
   "vita:719": {
@@ -2081,7 +2081,7 @@
   },
   "vita:728": {
     "base_total": 0,
-    "release_downloads": 12597,
+    "release_downloads": 12598,
     "tag": "v1.2"
   },
   "vita:730": {
@@ -2096,7 +2096,7 @@
   },
   "vita:732": {
     "base_total": 0,
-    "release_downloads": 785,
+    "release_downloads": 786,
     "tag": "0.97.02-vita.1"
   },
   "vita:733": {
@@ -2106,7 +2106,7 @@
   },
   "vita:734": {
     "base_total": 0,
-    "release_downloads": 9528,
+    "release_downloads": 9529,
     "tag": "V1.45"
   },
   "vita:735": {
@@ -2146,7 +2146,7 @@
   },
   "vita:745": {
     "base_total": 0,
-    "release_downloads": 2324,
+    "release_downloads": 2326,
     "tag": "v8.2.0"
   },
   "vita:746": {
@@ -2196,7 +2196,7 @@
   },
   "vita:756": {
     "base_total": 0,
-    "release_downloads": 2013,
+    "release_downloads": 2014,
     "tag": "v1.0"
   },
   "vita:758": {
@@ -2206,7 +2206,7 @@
   },
   "vita:76": {
     "base_total": 0,
-    "release_downloads": 9636,
+    "release_downloads": 9640,
     "tag": "0.13.2"
   },
   "vita:760": {
@@ -2216,7 +2216,7 @@
   },
   "vita:762": {
     "base_total": 0,
-    "release_downloads": 1161,
+    "release_downloads": 1162,
     "tag": "v1.0"
   },
   "vita:763": {
@@ -2281,7 +2281,7 @@
   },
   "vita:789": {
     "base_total": 0,
-    "release_downloads": 547,
+    "release_downloads": 548,
     "tag": "rev1"
   },
   "vita:791": {
@@ -2301,7 +2301,7 @@
   },
   "vita:796": {
     "base_total": 0,
-    "release_downloads": 528,
+    "release_downloads": 529,
     "tag": "v1.4"
   },
   "vita:799": {
@@ -2366,12 +2366,12 @@
   },
   "vita:814": {
     "base_total": 0,
-    "release_downloads": 2738,
+    "release_downloads": 2739,
     "tag": "1.20"
   },
   "vita:815": {
     "base_total": 0,
-    "release_downloads": 1815,
+    "release_downloads": 1819,
     "tag": "Nightly"
   },
   "vita:817": {
@@ -2426,7 +2426,7 @@
   },
   "vita:829": {
     "base_total": 0,
-    "release_downloads": 606,
+    "release_downloads": 607,
     "tag": "v1.9.vita.2"
   },
   "vita:830": {
@@ -2471,12 +2471,12 @@
   },
   "vita:845": {
     "base_total": 0,
-    "release_downloads": 2198,
+    "release_downloads": 2199,
     "tag": "v.1.2"
   },
   "vita:846": {
     "base_total": 0,
-    "release_downloads": 2537,
+    "release_downloads": 2538,
     "tag": "v.1.0"
   },
   "vita:847": {
@@ -2561,7 +2561,7 @@
   },
   "vita:877": {
     "base_total": 0,
-    "release_downloads": 9939,
+    "release_downloads": 9940,
     "tag": "v.2.5"
   },
   "vita:878": {
@@ -2571,7 +2571,7 @@
   },
   "vita:881": {
     "base_total": 0,
-    "release_downloads": 2013,
+    "release_downloads": 2014,
     "tag": "v.1.0.1"
   },
   "vita:9": {
@@ -2611,7 +2611,7 @@
   },
   "vita:997": {
     "base_total": 0,
-    "release_downloads": 120979,
+    "release_downloads": 120981,
     "tag": "v.1.2"
   },
   "vita:999": {
