@@ -13,6 +13,6 @@
   "requirements": "Henkaku Enso, reF00D and a Testing Kit firmware PUP",
   "screenshots": [],
   "trophies": false,
-  "ai": true,
+  "ai": false,
   "trusted": false
 }

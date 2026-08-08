@@ -13,6 +13,6 @@
   "requirements": "Real testing kit (PTEL) or devlopment kit (PDEL) hardware, running 3.60 henkaku",
   "screenshots": [],
   "trophies": false,
-  "ai": true,
+  "ai": false,
   "trusted": false
 }
