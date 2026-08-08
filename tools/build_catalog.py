@@ -534,7 +534,15 @@ def process_entry(path: Path, entry: dict, categories: dict, cache: dict, truste
     # equivalent signal, so it just shows zero rather than paying for an
     # API call that would 404 anyway.
     likes = repo_stars(repo) if repo else 0
-    trusted = any(name in trusted_authors for name in split_authors(entry["author"]))
+    # The "author" field is free text (real names, nicknames, aliases) and
+    # doesn't always match the contributor's actual GitHub username, but a
+    # repo's owner always is one - check both rather than requiring
+    # whoever edits trusted_authors.json to know every alias a developer
+    # goes by in the catalog on top of their real username.
+    candidates = split_authors(entry["author"])
+    if repo:
+        candidates.append(repo.split("/", 1)[0].lower())
+    trusted = any(name in trusted_authors for name in candidates)
     if "trusted" not in entry or entry["trusted"] != trusted:
         entry["trusted"] = trusted
         path.write_text(json.dumps(entry, indent=2, ensure_ascii=False) + "\n")
