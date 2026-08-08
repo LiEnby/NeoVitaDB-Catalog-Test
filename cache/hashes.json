@@ -432,6 +432,11 @@
     "hash": "0c91c430c618744af1f84c6e84f68c93",
     "hash2": "1a13318f746817214197b4db3678d352"
   },
+  "LiEnby/eCDP-Serial-Code@505830376@2026-08-08T00:15:22Z": {
+    "folder": "",
+    "hash": "a773bc3886f87bcc526cdfaa7ec95fd8",
+    "hash2": ""
+  },
   "LiEnby/real-package-installer@462948610@2026-07-01T07:22:36Z": {
     "hash": "84ef89aed6bc0c35788476412ffd40ae",
     "hash2": ""
@@ -11946,10 +11951,25 @@
     "hash": "0c91c430c618744af1f84c6e84f68c93",
     "hash2": "b2847b22443e01d0ef931cded9ea05c5"
   },
+  "direct:https://git.silica.codes/Li/activate.vpk/releases/download/latest/activate.vpk": {
+    "folder": "",
+    "hash": "a3d30cf217e90dbee7b127bd22a2670e",
+    "hash2": ""
+  },
+  "direct:https://git.silica.codes/Li/cex-2-rex/releases/download/latest/CEX2REX.vpk": {
+    "folder": "",
+    "hash": "01fb8dd875a599ec66fb359293d5fa6b",
+    "hash2": ""
+  },
   "direct:https://git.silica.codes/Li/creeperdiver/releases/download/latest/creeperdiver-vita.vpk": {
     "folder": "",
     "hash": "0c91c430c618744af1f84c6e84f68c93",
     "hash2": "81de362d2aea049151e1b238ff6df3e4"
+  },
+  "direct:https://git.silica.codes/Li/nosleep/releases/download/latest/NoSleep.vpk": {
+    "folder": "",
+    "hash": "773ff199d9b0417dba7c146ebe91e271",
+    "hash2": ""
   },
   "direct:https://git.silica.codes/Li/parentalcontrolbypass/releases/download/latest/Parental_Control_Bypass.vpk": {
     "folder": "",
@@ -11964,6 +11984,11 @@
   "direct:https://git.silica.codes/Li/trophaxse/releases/download/latest/TrophaxSE.vpk": {
     "folder": "",
     "hash": "02c18d977c3b72b3d83c044ac66e1a15",
+    "hash2": ""
+  },
+  "direct:https://git.silica.codes/Li/trophydumper/releases/download/latest/TrophyDumper.vpk": {
+    "folder": "",
+    "hash": "cb867ef6f7275708ca0b968a16b8fd12",
     "hash2": ""
   },
   "direct:https://git.silica.codes/TheCrystalOrg/ImMultiple/releases/download/latest/ImMultiple_VITA.vpk": {
@@ -15137,6 +15162,11 @@
   "robin994/NeoVitaDB-Downloader@506217908@2026-08-08T08:50:45Z": {
     "folder": "",
     "hash": "b02b6e3f59533cdb5e0bb41ee9925652",
+    "hash2": ""
+  },
+  "robin994/NeoVitaDB-Downloader@506253727@2026-08-08T09:45:33Z": {
+    "folder": "",
+    "hash": "bad95cd02784dea298bea66cead073c3",
     "hash2": ""
   },
   "rodentcat/deadknight-vita-port@54846350@2022-01-24T20:46:16Z": {
