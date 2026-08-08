@@ -67,12 +67,14 @@ hand for it.
 The one exception is `trusted`: unlike the fields above, it *is* written into
 your `apps/<platform>/NNNN-your-slug.json`, but not by you. Every build
 recomputes it from `trusted_authors.json` (root of this repo, a JSON object
-mapping each GitHub username to `true`/`false`) — `trusted` is true when your
-`author` field exactly matches a key there with value `true` — and, when it
+of GitHub usernames explicitly marked `true`) — `trusted` is true when your
+`author` field matches a key there, case-insensitively — and, when it
 changes, rewrites the field in place and commits it back — same mechanism as
 `cache/hashes.json`. Setting it yourself in a PR has no lasting effect; the
-next scheduled build overwrites it with the real whitelist check. To get
-listed, open a PR adding `"your-username": true` to `trusted_authors.json`.
+next scheduled build overwrites it with the real allowlist check. This is
+opt-in, not a directory of every author: there's no requirement to be listed
+at all, and an author simply absent is untrusted. To get listed, open a PR
+adding `"your-username": true` to `trusted_authors.json`.
 
 Your repository's GitHub star count is also published on each entry as
 `likes` — a read-only, build-computed counter, unrelated to `trusted`.

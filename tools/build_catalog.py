@@ -112,11 +112,16 @@ def repo_stars(repo: str) -> int:
 
 
 def load_trusted_authors() -> set[str]:
+    """Lowercased names - an opt-in allowlist, so absence just means
+    untrusted rather than "not yet reviewed" (contrast with the old
+    false-means-reviewed convention this replaced). Matching is
+    case-insensitive since the same author can appear with slightly
+    different capitalization across entries."""
     if not TRUSTED_AUTHORS_FILE.exists():
         return set()
     data = json.loads(TRUSTED_AUTHORS_FILE.read_text())
     data.pop("$comment", None)
-    return {name for name, is_trusted in data.items() if is_trusted}
+    return {name.lower() for name, is_trusted in data.items() if is_trusted}
 
 
 def head_size(url: str) -> int:
@@ -522,7 +527,7 @@ def process_entry(path: Path, entry: dict, categories: dict, cache: dict, truste
     # equivalent signal, so it just shows zero rather than paying for an
     # API call that would 404 anyway.
     likes = repo_stars(repo) if repo else 0
-    trusted = entry["author"] in trusted_authors
+    trusted = entry["author"].lower() in trusted_authors
     if "trusted" not in entry or entry["trusted"] != trusted:
         entry["trusted"] = trusted
         path.write_text(json.dumps(entry, indent=2, ensure_ascii=False) + "\n")
