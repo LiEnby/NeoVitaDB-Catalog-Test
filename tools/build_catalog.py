@@ -437,7 +437,17 @@ def build() -> None:
             log("  cached")
         else:
             log(f"  downloading {download_url} ({size_bytes} bytes)")
-            main_hash, aux_hash, folder = checksums(fetch(download_url), entry["platform"])
+            try:
+                main_hash, aux_hash, folder = checksums(fetch(download_url), entry["platform"])
+            except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
+                # A transient host error (a dead/overloaded mirror, a 500,
+                # a reset connection) shouldn't take down the whole build -
+                # at this catalog's size a network hiccup on *some* asset,
+                # across thousands of them, is close to guaranteed on any
+                # given run. Skip just this entry and keep going; it'll be
+                # retried on the next run.
+                log(f"  ! skipped: download failed ({e})")
+                continue
             cache[key] = {"hash": main_hash, "hash2": aux_hash, "folder": folder}
 
         description_note = ""
