@@ -1,8 +1,8 @@
 "use strict";
 
 const FEEDS = {
-  vita: "https://robin994.github.io/NeoVitaDB-Catalog/vita.json",
-  psp: "https://robin994.github.io/NeoVitaDB-Catalog/psp.json",
+  vita: "https://robin994.github.io/NeoVitaDB-Catalog-Test/vita.json",
+  psp: "https://robin994.github.io/NeoVitaDB-Catalog-Test/psp.json",
 };
 const CAT_MAP = { 1: "Original Game", 2: "Game Port", 4: "Utility", 5: "Emulator" };
 
