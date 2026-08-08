@@ -11656,6 +11656,11 @@
     "hash": "05d2b1c9f578439a310ad2142fd9f66b",
     "hash2": ""
   },
+  "direct:https://archive.org/download/wiof.7z/wiof.zip": {
+    "folder": "wiof",
+    "hash": "c032400c72707013d49bd7d37ff53b66",
+    "hash2": ""
+  },
   "direct:https://archive.org/download/wire-war.-7z/WireWar.zip": {
     "folder": "WireWar",
     "hash": "161be38b6542e7e76bf9611ae638048d",
@@ -15008,6 +15013,11 @@
     "hash": "f470a525cf4fb990bcefd6abb9f7b948",
     "hash2": ""
   },
+  "noword/Emu4VitaPlus@506214947@2026-08-08T08:51:46Z": {
+    "folder": "",
+    "hash": "57635ec4866f11e9f3709b51d2c5732b",
+    "hash2": ""
+  },
   "nxengine/nxengine-evo@61971948@2022-04-08T17:30:37Z": {
     "folder": "",
     "hash": "5fe624ba96993d7336d7a4d5241c56dd",
@@ -15033,6 +15043,11 @@
     "hash2": ""
   },
   "nzp-team/nzportable@504879509@2026-08-07T08:20:13Z": {
+    "folder": "",
+    "hash": "",
+    "hash2": ""
+  },
+  "nzp-team/nzportable@506181790@2026-08-08T07:54:40Z": {
     "folder": "",
     "hash": "",
     "hash2": ""
@@ -15117,6 +15132,11 @@
   "robin994/NeoVitaDB-Downloader@505420540@2026-08-07T17:04:40Z": {
     "folder": "",
     "hash": "caf650cb24d3e95c800754a9d3c85df8",
+    "hash2": ""
+  },
+  "robin994/NeoVitaDB-Downloader@506217908@2026-08-08T08:50:45Z": {
+    "folder": "",
+    "hash": "b02b6e3f59533cdb5e0bb41ee9925652",
     "hash2": ""
   },
   "rodentcat/deadknight-vita-port@54846350@2022-01-24T20:46:16Z": {
