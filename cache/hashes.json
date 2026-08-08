@@ -417,6 +417,11 @@
     "hash": "d292043abcd09c874d818723245f2070",
     "hash2": ""
   },
+  "LeZergan/mcsm-vita@506171586@2026-08-08T07:37:43Z": {
+    "folder": "",
+    "hash": "91a84ac46e4d2527161934964bf14b4e",
+    "hash2": ""
+  },
   "LiEnby/SceCompat-Diagnostic@206355230@2024-11-14T01:43:25Z": {
     "folder": "PSP/GAME/SIMP01042",
     "hash": "5c41abdf50bad7b311f91891df654bad",
@@ -2206,6 +2211,11 @@
     "hash": "91c9f540b99c25de99661c1c5db6613a",
     "hash2": ""
   },
+  "direct:https://archive.org/download/avoid-it-v.-02.7z/Avoid%20It%20v.02.zip": {
+    "folder": "Avoid It v.02",
+    "hash": "2a2b6d653789107ffd3be285b57d57fc",
+    "hash2": ""
+  },
   "direct:https://archive.org/download/awaker.-7z/Awaker.zip": {
     "folder": "Awaker",
     "hash": "1421688a5c2f86be2dc26c64e655ff8c",
@@ -2289,6 +2299,11 @@
   "direct:https://archive.org/download/balrogrush.7z/balrogrush.zip": {
     "folder": "balrogrush",
     "hash": "42415c2b9dff8808e7240966022bc99f",
+    "hash2": ""
+  },
+  "direct:https://archive.org/download/bananafalling.7z/bananafalling.zip": {
+    "folder": "bananafalling",
+    "hash": "98d8663e2e7abde2751625868d703eab",
     "hash2": ""
   },
   "direct:https://archive.org/download/banddv3.7z/banddv3.zip": {
@@ -2921,6 +2936,11 @@
     "hash": "df660f26fe978e60bbca90bbd6046097",
     "hash2": ""
   },
+  "direct:https://archive.org/download/calcula-lo-vi.7z/calcula-lo-vi.zip": {
+    "folder": "calcula-lo-vi",
+    "hash": "94a60a7bccad6b58750cd2a8132c52d6",
+    "hash2": ""
+  },
   "direct:https://archive.org/download/cale.-7z/Extra/cale_editor.zip": {
     "folder": "cale_editor",
     "hash": "3679d55631e2f020af9d1f47cd84e70b",
@@ -2999,6 +3019,11 @@
   "direct:https://archive.org/download/catch_me_if_you_can.7z/catch_me_if_you_can.zip": {
     "folder": "catch_me_if_you_can",
     "hash": "f414f087f805134c69d1044494bdbdc7",
+    "hash2": ""
+  },
+  "direct:https://archive.org/download/cause-of-war-1944.7z/CauseOfWar1944.zip": {
+    "folder": "CauseOfWar1944",
+    "hash": "22f364ca47bad43d09125403bf725879",
     "hash2": ""
   },
   "direct:https://archive.org/download/cave-00992-00000/Old%20Versions/cs-psp-demo-1.0.zip": {
@@ -3419,6 +3444,11 @@
   "direct:https://archive.org/download/cs-frv-psp.-7z/CS_FRV_PSP.zip": {
     "folder": "CS_FRV_PSP",
     "hash": "5a05a4d268d36f17834a7d1a917d3d49",
+    "hash2": ""
+  },
+  "direct:https://archive.org/download/cs-psp.-7z/CS-PSP.zip": {
+    "folder": "CS-PSP",
+    "hash": "6244cacfe47ddec0bc65acd1d5d5fb02",
     "hash2": ""
   },
   "direct:https://archive.org/download/csdm-0.55.7z/CSDM%200.55.zip": {
@@ -3871,6 +3901,11 @@
     "hash": "d20b6d5727fae83da0f95ac5a5361605",
     "hash2": ""
   },
+  "direct:https://archive.org/download/dots_20221111/dots.zip": {
+    "folder": "dots",
+    "hash": "e0ba427909b4748283099bad0ad49eee",
+    "hash2": ""
+  },
   "direct:https://archive.org/download/doudi.7z/Lord.zip": {
     "folder": "Lord",
     "hash": "cec2fad48ddf3654403457b905a8d9d4",
@@ -3986,9 +4021,19 @@
     "hash": "2808309ac586266c9e84e4ff853d538d",
     "hash2": ""
   },
+  "direct:https://archive.org/download/duck-hunt-v-0.2.7z/duck-hunt%20v0.2.zip": {
+    "folder": "duck-hunt v0.2",
+    "hash": "e4cb8b70368d7e057c7f4c9fdcf0c0e5",
+    "hash2": ""
+  },
   "direct:https://archive.org/download/duck-hunt.-7z/Duck%20Hunt.zip": {
     "folder": "Duck Hunt",
     "hash": "dd8194c7f60990d4036ce96d797f6d96",
+    "hash2": ""
+  },
+  "direct:https://archive.org/download/duck-hunt.-7z_202103/DuckHunt.zip": {
+    "folder": "DuckHunt/DuckHunt%",
+    "hash": "c4e39b5d4ea043407021381be4f45b5f",
     "hash2": ""
   },
   "direct:https://archive.org/download/duck-killer.-7z/Duck%20Killer.zip": {
@@ -4414,6 +4459,11 @@
   "direct:https://archive.org/download/flappy-psp/FlappyPSP.zip": {
     "folder": "FlappyPSP",
     "hash": "94243d09c00c3585127322a5dbf23c2a",
+    "hash2": ""
+  },
+  "direct:https://archive.org/download/flat-paintball-v-1.0-unsigned.-7z/Flat%20Paintball%20v1.0%20%28unsigned%29.zip": {
+    "folder": "Flat Paintball v1.0 (unsigned)",
+    "hash": "7a8d4d80db958ab67643ea3a6d079f49",
     "hash2": ""
   },
   "direct:https://archive.org/download/flex-1.0a.-7z/FLEX_1.0a.zip": {
@@ -5291,6 +5341,11 @@
     "hash": "252b98e77c5420933ad60ca4c42911ee",
     "hash2": ""
   },
+  "direct:https://archive.org/download/im-50.7z/IM50.zip": {
+    "folder": "IM50",
+    "hash": "70635feae5a6fefc9ba5ef877a221f34",
+    "hash2": ""
+  },
   "direct:https://archive.org/download/impact.-7z/IMPACT.zip": {
     "folder": "IMPACT",
     "hash": "31f9b8ff77bf237bed635f6171c70c16",
@@ -5569,6 +5624,11 @@
   "direct:https://archive.org/download/kakuro-nichiyou-psp.-7z/Old%20Versions/Kakuro_Nichiyou_PSP.zip": {
     "folder": "Kakuro_Nichiyou_PSP",
     "hash": "a982b380111ecdcdab7832ed81dd7996",
+    "hash2": ""
+  },
+  "direct:https://archive.org/download/kanes-wrath-psp-way.-7z/Kanes%20Wrath%20-%20Psp%20Way.zip": {
+    "folder": "Kanes Wrath - Psp Way",
+    "hash": "918cf3acb96c21c6d9642d14b6744370",
     "hash2": ""
   },
   "direct:https://archive.org/download/karmaspv0-2.7z/karmaspv0-2.zip": {
@@ -6414,6 +6474,11 @@
   "direct:https://archive.org/download/mastermind.7z/mastermind.zip": {
     "folder": "mastermind",
     "hash": "2085f0531384eae7742c4682180fa7fc",
+    "hash2": ""
+  },
+  "direct:https://archive.org/download/masters-intution-builder-for-psp.-7z/Masters%20Intution%20Builder%20for%20PSP.zip": {
+    "folder": "Masters Intution Builder for PSP",
+    "hash": "07581734079b5aaf9b6154f5bf9a3b91",
     "hash2": ""
   },
   "direct:https://archive.org/download/mathemati-x.-7z/MathematiX.zip": {
@@ -8001,6 +8066,11 @@
     "hash": "637abda320fcba7a9a9b42618e4d53d5",
     "hash2": ""
   },
+  "direct:https://archive.org/download/psccd.-7z/PSCCD.zip": {
+    "folder": "PSCCD",
+    "hash": "5146ec70dd147ee1a20b6f6f6aa1e41e",
+    "hash2": ""
+  },
   "direct:https://archive.org/download/psp-2048.7z/PSP2048.zip": {
     "folder": "PSP2048",
     "hash": "513b831516393d66a5179e7f182e74a0",
@@ -9421,6 +9491,11 @@
     "hash": "602d31f6cdf3dd4653e5beb4069f50ef",
     "hash2": ""
   },
+  "direct:https://archive.org/download/scedealnodeal.-7z/SCEdealnodeal.zip": {
+    "folder": "SCEdealnodeal",
+    "hash": "22fb4a1866ae548c07dc63670482b865",
+    "hash2": ""
+  },
   "direct:https://archive.org/download/scifiyoyo-henc.-7z/SCIFIYOYO_HENC.zip": {
     "folder": "SCIFIYOYO_HENC",
     "hash": "27b621a25ea861de8d648a250606adc1",
@@ -10314,6 +10389,11 @@
   "direct:https://archive.org/download/stars-pong-hockey.-7z/Stars%20Pong%20Hockey.zip": {
     "folder": "Stars Pong Hockey",
     "hash": "d17998764f13a6cef2f909d2f3731cfe",
+    "hash2": ""
+  },
+  "direct:https://archive.org/download/steinsgate-divergence.7z/steinsgate-divergence.zip": {
+    "folder": "steinsgate-divergence",
+    "hash": "ddb1ea86cc2e82ad19fa1fcae3dbd76d",
     "hash2": ""
   },
   "direct:https://archive.org/download/stella_bin_20060106/stella_bin_20060106.zip": {
@@ -11481,6 +11561,11 @@
     "hash": "c56cd9a71aff4f4d194c3f608f1980c0",
     "hash2": ""
   },
+  "direct:https://archive.org/download/vscycles-v-100.7z/VSCycles_v100.zip": {
+    "folder": "VSCycles_v100",
+    "hash": "dfe64530c65a99b2504d8120308e6fb4",
+    "hash2": ""
+  },
   "direct:https://archive.org/download/vsiuo-v2bunch-of-flowers.7z/vsiuo-v2%2Bbunch-of-flowers.zip": {
     "folder": "vsiuo-v2+bunch-of-flowers",
     "hash": "6ca712f7b9f5284b9b0b4b0c443b0b87",
@@ -11619,6 +11704,11 @@
   "direct:https://archive.org/download/wormstation.7z/wormstation.zip": {
     "folder": "wormstation",
     "hash": "377bade60061986682aa16b8a69bae14",
+    "hash2": ""
+  },
+  "direct:https://archive.org/download/wot-s-47-ronin-beta-01.7z/WotS%2047%20Ronin%20Beta%2001.zip": {
+    "folder": "WotS 47 Ronin Beta 01",
+    "hash": "a96330d78a584ad8a83f6209ce367661",
     "hash2": ""
   },
   "direct:https://archive.org/download/wth-0186-psp.-7z/Old%20Versions/WTH_0186_PSP.zip": {
@@ -11774,6 +11864,11 @@
   "direct:https://archive.org/download/zelda.-7z/ZELDA.zip": {
     "folder": "ZELDA",
     "hash": "85e25e8c3164fc349494b1b3b8e2412e",
+    "hash2": ""
+  },
+  "direct:https://archive.org/download/zelda.7z/zelda.zip": {
+    "folder": "zelda",
+    "hash": "81fdec78accfc21e0959b8cfb1e0ee21",
     "hash2": ""
   },
   "direct:https://archive.org/download/zk102.7z/zk102.zip": {
