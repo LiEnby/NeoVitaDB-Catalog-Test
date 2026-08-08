@@ -9,9 +9,10 @@
   "version": "v.0.3",
   "prerelease": false,
   "icon": "1576-luavitaseccy.png",
-  "description": "luaVitaSeccy is a \u201cSection ID\u201d calculator for \u201clegacy\u201d Phantasy Star Online games, namely PSO games that came out before \u201cBlue Burst\u201d. Section ID\u2019s change what drop table enemies have and other minor aspect of those games.",
+  "description": "luaVitaSeccy is a “Section ID” calculator for “legacy” Phantasy Star Online games, namely PSO games that came out before “Blue Burst”. Section ID’s change what drop table enemies have and other minor aspect of those games.",
   "requirements": "",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

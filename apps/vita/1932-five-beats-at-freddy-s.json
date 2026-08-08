@@ -9,9 +9,10 @@
   "version": "v.1.0",
   "prerelease": false,
   "icon": "1932-five-beats-at-freddy-s.png",
-  "description": "A simple rhythm game made for a PS Vita homebrew contest, inspired by Friday Night Funkin\u2019.\nAs the name suggests, there are five playable songs, each offering its own difficulty level.",
+  "description": "A simple rhythm game made for a PS Vita homebrew contest, inspired by Friday Night Funkin’.\nAs the name suggests, there are five playable songs, each offering its own difficulty level.",
   "requirements": "",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

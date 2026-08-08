@@ -9,9 +9,10 @@
   "version": "v.1.1",
   "prerelease": false,
   "icon": "1847-the-world-ends-with-you-vita.png",
-  "description": "Port of the Android version of The World Ends With You for the PS Vita.\nThe game is a Action-RPG developed by Square Enix and Jupiter, originally made for the Nintendo DS. The Android port was done by h.a.n.d.\nComplete the mission...or face erasure. That\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s all Neku knows after regaining consciousness in the middle of a busy intersection without his memories. Now he and his partner must fight to survive a life-or-death game in this twisted tale with more turns than the urban labyrinth of Tokyo they\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2re trapped in.",
+  "description": "Port of the Android version of The World Ends With You for the PS Vita.\nThe game is a Action-RPG developed by Square Enix and Jupiter, originally made for the Nintendo DS. The Android port was done by h.a.n.d.\nComplete the mission...or face erasure. ThatÃ¢â‚¬â„¢s all Neku knows after regaining consciousness in the middle of a busy intersection without his memories. Now he and his partner must fight to survive a life-or-death game in this twisted tale with more turns than the urban labyrinth of Tokyo theyÃ¢â‚¬â„¢re trapped in.",
   "requirements": "- Game Data Files: NDS/Android",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

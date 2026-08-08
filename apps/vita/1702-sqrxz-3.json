@@ -9,9 +9,10 @@
   "version": "v.1.05r",
   "prerelease": false,
   "icon": "1702-sqrxz-3.png",
-  "description": "Sqrxz 3 is a Jump\u2019n\u2019Run which will please the hardcore gamer amongst you. You need fast fingers and a fast brain. Original Sqrxz made by Marcus Vesterlund and John Holmvall.",
+  "description": "Sqrxz 3 is a Jump’n’Run which will please the hardcore gamer amongst you. You need fast fingers and a fast brain. Original Sqrxz made by Marcus Vesterlund and John Holmvall.",
   "requirements": "- Game Data Files: PC",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

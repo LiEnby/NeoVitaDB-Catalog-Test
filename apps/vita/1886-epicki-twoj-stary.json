@@ -1,6 +1,6 @@
 {
   "id": 1886,
-  "name": "Epicki Tw\u00f3j Stary",
+  "name": "Epicki Twój Stary",
   "author": "Domino",
   "category": "game",
   "platform": "vita",
@@ -13,5 +13,6 @@
   "requirements": "",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

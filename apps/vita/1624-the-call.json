@@ -9,9 +9,10 @@
   "version": "v.1.0.1",
   "prerelease": false,
   "icon": "1624-the-call.png",
-  "description": "Settled in a distopyan America deeply immersed in a noir atmosphere, The Call, developed for the Global Game Jam 2018, follows the daily routine of a cable operator, a now forgotten job. But what seems to be another ordinary day will eventually turn into something else, as our protagonist unfold something bigger\u2026",
+  "description": "Settled in a distopyan America deeply immersed in a noir atmosphere, The Call, developed for the Global Game Jam 2018, follows the daily routine of a cable operator, a now forgotten job. But what seems to be another ordinary day will eventually turn into something else, as our protagonist unfold something bigger…",
   "requirements": "",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

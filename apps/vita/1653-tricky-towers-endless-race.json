@@ -9,9 +9,10 @@
   "version": "v.0.5",
   "prerelease": false,
   "icon": "1653-tricky-towers-endless-race.png",
-  "description": "With your brilliant robe and magic powers, it\u00e2\u20ac\u2122s time to build some Tricky Towers! Stack your bricks in this land of fable, whose marvelous tower will be the most stable? Battle your friends and rise to fame, in this frantic physics game.",
+  "description": "With your brilliant robe and magic powers, itâ€™s time to build some Tricky Towers! Stack your bricks in this land of fable, whose marvelous tower will be the most stable? Battle your friends and rise to fame, in this frantic physics game.",
   "requirements": "",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

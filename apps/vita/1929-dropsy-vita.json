@@ -9,9 +9,10 @@
   "version": "v.1.02",
   "prerelease": false,
   "icon": "1929-dropsy-vita.png",
-  "description": "Dropsy is a non-traditional take on the classic point and click adventure formula starring the game\u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u201e\u00a2s perpetually carefree namesake clown as he explores a richly detailed world full of colorful characters and sinister secrets, doling out hugs along the way.",
+  "description": "Dropsy is a non-traditional take on the classic point and click adventure formula starring the gameÃ¢â‚¬â„¢s perpetually carefree namesake clown as he explores a richly detailed world full of colorful characters and sinister secrets, doling out hugs along the way.",
   "requirements": "- Game Data Files: PC",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

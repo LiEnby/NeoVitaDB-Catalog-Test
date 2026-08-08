@@ -11,5 +11,6 @@
   "version": "v.1.92.3",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

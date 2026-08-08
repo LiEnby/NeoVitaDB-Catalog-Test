@@ -11,5 +11,6 @@
   "version": "Cash Tournament Edition",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

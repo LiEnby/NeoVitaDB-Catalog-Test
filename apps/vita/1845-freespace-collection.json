@@ -9,9 +9,10 @@
   "version": "v.1.0.1",
   "prerelease": false,
   "icon": "1845-freespace-collection.png",
-  "description": "Port of Descent: FreeSpace \u00c3\u00a2\u00e2\u201a\u00ac\u00e2\u20ac\u0153 The Great War and Freespace 2 for PSVITA.\nBoth games are popular space combat simulation games derived from Descent franchise with a very florish modding community that created 20 years worth of extra campaigns playable with this port.\n\nNOTE: Check this link for the controls mapping scheme: https://gist.github.com/CatoTheYounger97/612ec59aa5dab4aefe1e09e34b5b1ddf",
+  "description": "Port of Descent: FreeSpace Ã¢â‚¬â€œ The Great War and Freespace 2 for PSVITA.\nBoth games are popular space combat simulation games derived from Descent franchise with a very florish modding community that created 20 years worth of extra campaigns playable with this port.\n\nNOTE: Check this link for the controls mapping scheme: https://gist.github.com/CatoTheYounger97/612ec59aa5dab4aefe1e09e34b5b1ddf",
   "requirements": "- libshacccg.suprx",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

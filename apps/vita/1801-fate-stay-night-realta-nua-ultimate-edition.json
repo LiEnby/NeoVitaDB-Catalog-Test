@@ -13,5 +13,6 @@
   "requirements": "- fd_fix.skprx OR repatch_ex.skprx.\n- Game Data Files: PC",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

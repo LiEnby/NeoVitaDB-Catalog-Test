@@ -9,9 +9,10 @@
   "version": "v.1.1",
   "prerelease": false,
   "icon": "1940-el-enviado.png",
-  "description": "El Enviado (The Envoy) is a video game created for the PSVita Contest ReiHEN. In this game you play as an angel who works at a temporary-employment agency, trying to prevent the suicide of a young man who wants to jump from a high-rise apartment.\nTry to connect with him through dialogue \u2014 will you be able to save him without dying in the attempt?",
+  "description": "El Enviado (The Envoy) is a video game created for the PSVita Contest ReiHEN. In this game you play as an angel who works at a temporary-employment agency, trying to prevent the suicide of a young man who wants to jump from a high-rise apartment.\nTry to connect with him through dialogue — will you be able to save him without dying in the attempt?",
   "requirements": "",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }

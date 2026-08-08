@@ -11,5 +11,6 @@
   "version": "2022.10.19",
   "screenshots": [],
   "trophies": false,
-  "ai": false
+  "ai": false,
+  "trusted": false
 }
