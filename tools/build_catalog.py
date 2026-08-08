@@ -111,6 +111,13 @@ def repo_stars(repo: str) -> int:
     return info.get("stargazers_count", 0)
 
 
+def split_authors(author: str) -> list[str]:
+    """"cpasjuste & rsn8887 & Plombo" -> the three individual names,
+    lowercased. A collaboration should count as trusted if any one
+    contributor is - see trust-check in process_entry()."""
+    return [name.strip().lower() for name in re.split(r"\s*&\s*|\s*,\s*", author) if name.strip()]
+
+
 def load_trusted_authors() -> set[str]:
     """Lowercased names - an opt-in allowlist, so absence just means
     untrusted rather than "not yet reviewed" (contrast with the old
@@ -527,7 +534,7 @@ def process_entry(path: Path, entry: dict, categories: dict, cache: dict, truste
     # equivalent signal, so it just shows zero rather than paying for an
     # API call that would 404 anyway.
     likes = repo_stars(repo) if repo else 0
-    trusted = entry["author"].lower() in trusted_authors
+    trusted = any(name in trusted_authors for name in split_authors(entry["author"]))
     if "trusted" not in entry or entry["trusted"] != trusted:
         entry["trusted"] = trusted
         path.write_text(json.dumps(entry, indent=2, ensure_ascii=False) + "\n")
