@@ -87,7 +87,20 @@ jobs:
                 exit 1
               fi
               git fetch origin main
-              git rebase origin/main
+              if ! git rebase origin/main; then
+                # A real content conflict (not just a fast-forward gap) means
+                # two runs' independently-regenerated cache files disagree -
+                # nothing worth reconciling line-by-line, since both sides
+                # are just derived data. Drop the botched rebase and recommit
+                # this run's already-built working tree on top of the new
+                # main instead. (A bare `git rebase origin/main` failure
+                # would otherwise kill this whole step immediately under
+                # GitHub Actions' implicit `bash -e`, skipping every
+                # remaining retry.)
+                git rebase --abort
+                git reset --soft origin/main
+                git diff --cached --quiet || git commit -m "Refresh caches and trust flags"
+              fi
             done
           fi
 
