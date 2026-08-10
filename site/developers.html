@@ -80,6 +80,101 @@
       </div>
     </section>
 
+    <section class="developer-panel generator-panel" aria-labelledby="generator-title">
+      <p class="eyebrow">Automatic</p>
+      <h2 id="generator-title">Add entries, step by step</h2>
+      <p>Walk through one homebrew at a time: its GitHub repo, its <code>.vpk</code>, its icon. Add as many as you like, then download a ready-to-drop <code>apps/vita/</code> + <code>icons_vita/</code> package for your pull request.</p>
+
+      <div class="wizard-steps-row">
+        <ol class="wizard-steps" aria-hidden="true">
+          <li class="wizard-step-tab" data-step="repo">1. Repo</li>
+          <li class="wizard-step-tab" data-step="vpk">2. Vpk</li>
+          <li class="wizard-step-tab" data-step="icon">3. Icon</li>
+          <li class="wizard-step-tab" data-step="review">4. Review</li>
+        </ol>
+        <button id="w-cancel" class="wizard-back" hidden>Cancel -&gt; back to list</button>
+      </div>
+
+      <div class="wizard-panel" data-panel="repo">
+        <p class="wizard-hint">Paste the GitHub repo that publishes this homebrew.</p>
+        <div class="repo-input-row">
+          <input type="text" id="w-repo-url" class="native-select" placeholder="github.com/owner/repo" />
+          <button id="w-repo-next" class="reset-btn">Look up latest release</button>
+        </div>
+        <button id="w-repo-skip" class="wizard-skip">Skip - I'll fill repo/asset in by hand</button>
+      </div>
+
+      <div class="wizard-panel" data-panel="vpk" hidden>
+        <p class="wizard-hint">Drop <strong id="w-vpk-hint-name">.vpk</strong> here (or any Vita vpk - it just needs to match this entry).</p>
+        <div id="w-dropzone-vpk" class="dropzone" tabindex="0" role="button" aria-label="Drop a vpk file or click to choose one">
+          <input type="file" id="w-vpk-file" accept=".vpk" hidden />
+          <svg viewBox="0 0 24 24" fill="none" class="dropzone-icon" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <p>Drop a <strong>.vpk</strong> here, or click to choose one</p>
+        </div>
+        <button id="w-vpk-back" class="wizard-back">&lt; Back</button>
+      </div>
+
+      <div class="wizard-panel" data-panel="icon" hidden>
+        <p class="wizard-hint">Drop a 128x128 PNG icon for this entry.</p>
+        <div id="w-dropzone-icon" class="dropzone" tabindex="0" role="button" aria-label="Drop a PNG icon or click to choose one">
+          <input type="file" id="w-icon-file" accept="image/png" hidden />
+          <img id="w-icon-preview" class="wizard-icon-preview" hidden alt="Icon preview" />
+          <p id="w-icon-label">Drop a <strong>.png</strong> here, or click to choose one</p>
+        </div>
+        <div class="wizard-panel-actions">
+          <button id="w-icon-back" class="wizard-back">&lt; Back</button>
+          <button id="w-icon-skip" class="wizard-skip">Skip icon</button>
+        </div>
+      </div>
+
+      <div class="wizard-panel" data-panel="review" hidden>
+        <div class="wizard-id-row">
+          <label for="w-id">id</label>
+          <input type="number" id="w-id" min="1" disabled />
+          <span id="w-id-status" class="wizard-id-status"></span>
+          <label class="wizard-checkbox"><input type="checkbox" id="w-custom-id" /> custom id</label>
+        </div>
+        <label class="wizard-checkbox wizard-ai-row"><input type="checkbox" id="w-ai" /> AI was used to help build this entry</label>
+
+        <div class="wizard-field">
+          <label for="w-description">description</label>
+          <textarea id="w-description" class="wizard-textarea" placeholder="What it does, in a couple of sentences."></textarea>
+        </div>
+
+        <div class="wizard-req-block">
+          <label class="wizard-checkbox"><input type="checkbox" id="w-needs-data" /> requires external data?</label>
+          <div class="wizard-subfield" id="w-data-fields" hidden>
+            <textarea id="w-data-desc" class="wizard-textarea" placeholder="What game data is needed? e.g. the PC version's game files, a specific ROM..."></textarea>
+            <p class="generator-warning"><strong>Don't link to copyrighted content.</strong> Only put a URL below if you have the right to redistribute that data (open assets, freeware you built yourself, etc). If players need to supply their own copy, leave the URL empty - the description above is enough.</p>
+            <input type="text" id="w-data-url" class="native-select" placeholder="https://.../data.zip (optional - direct download link)" />
+          </div>
+
+          <label class="wizard-checkbox"><input type="checkbox" id="w-needs-plugin" /> requires some plugin?</label>
+          <div class="wizard-subfield" id="w-plugin-fields" hidden>
+            <textarea id="w-plugin-list" class="wizard-textarea" placeholder="Which plugin(s)? e.g. kubridge, FdFix"></textarea>
+          </div>
+        </div>
+
+        <textarea id="generator-json" class="guide-code generator-textarea" spellcheck="false"></textarea>
+        <p class="generator-warning"><strong>Before opening a PR:</strong> double-check <code>id</code> isn't already taken by a just-merged entry, and fill in <code>author</code> / <code>category</code> by hand.</p>
+        <div class="wizard-panel-actions">
+          <button id="generator-copy" class="reset-btn">Copy JSON</button>
+          <button id="w-add-entry" class="reset-btn">Add this entry -&gt;</button>
+        </div>
+      </div>
+
+      <div class="wizard-panel" data-panel="continue" hidden>
+        <p class="wizard-hint">Added <strong id="w-count">0</strong> entry(ies) this session:</p>
+        <ul id="w-entries-list" class="wizard-entries-list"></ul>
+        <div class="wizard-panel-actions">
+          <button id="w-add-more" class="reset-btn">+ Add another entry</button>
+          <button id="w-download" class="reset-btn">Download package (zip)</button>
+        </div>
+      </div>
+
+      <div id="generator-status" class="generator-status" hidden></div>
+    </section>
+
     <section class="developer-reference" aria-labelledby="catalog-reference-title">
       <div class="reference-heading">
         <p class="eyebrow">For catalog users</p>
@@ -122,5 +217,7 @@
   <footer class="site-footer">
     <p>NeoVitaDB Catalog · <a href="index.html">Browse homebrew</a></p>
   </footer>
+
+  <script src="add-entry.js"></script>
 </body>
 </html>
