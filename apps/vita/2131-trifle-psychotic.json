@@ -8,5 +8,6 @@
   "repo": "KiddRwxSsj/trifle-psychotic-vita",
   "asset": "*.vpk",
   "icon": "1941-trifle-psychotic.png",
-  "description": "Native PS Vita port of Trifle Psychotic a retro sci-fi platformer written in C99. Built with SDL2 and the Vita's GXM backend."
+  "description": "Native PS Vita port of Trifle Psychotic a retro sci-fi platformer written in C99. Built with SDL2 and the Vita's GXM backend.",
+  "trusted": false
 }
