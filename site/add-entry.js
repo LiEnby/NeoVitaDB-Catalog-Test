@@ -193,6 +193,114 @@ async function fetchLatestVpkAssets(owner, repo) {
   throw new Error("no release with a .vpk/.zip asset found");
 }
 
+/* ---------------- PR automation (fork + branch + commit + PR) ----------------
+   Deliberately hardcoded to the test catalog, never the production one - this
+   button is a shortcut for staging submissions, not for publishing for real.
+   Runs entirely client-side: api.github.com sends CORS headers, so a user's
+   own token (kept in memory only, never persisted) is enough to do the whole
+   fork -> branch -> commit -> PR sequence straight from the browser. */
+
+const PR_UPSTREAM_OWNER = "robin994";
+const PR_UPSTREAM_REPO = "NeoVitaDB-Catalog-Test";
+
+async function ghApi(token, method, path, body) {
+  return fetch(`https://api.github.com${path}`, {
+    method,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      ...(body ? { "Content-Type": "application/json" } : {}),
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+}
+
+async function ghErrorMessage(res) {
+  const body = await res.json().catch(() => ({}));
+  return `HTTP ${res.status}${body.message ? ` - ${body.message}` : ""}`;
+}
+
+async function ensureFork(token, onProgress) {
+  const meRes = await ghApi(token, "GET", "/user");
+  if (!meRes.ok) throw new Error(`Invalid token (${await ghErrorMessage(meRes)}) - check it has "public_repo" scope (classic) or Contents + Pull requests write (fine-grained)`);
+  const forkOwner = (await meRes.json()).login;
+
+  let forkRes = await ghApi(token, "GET", `/repos/${forkOwner}/${PR_UPSTREAM_REPO}`);
+  if (forkRes.status === 404) {
+    onProgress(`Forking ${PR_UPSTREAM_OWNER}/${PR_UPSTREAM_REPO} to your account...`);
+    const createRes = await ghApi(token, "POST", `/repos/${PR_UPSTREAM_OWNER}/${PR_UPSTREAM_REPO}/forks`, {});
+    if (!createRes.ok) throw new Error(`Could not fork the repo (${await ghErrorMessage(createRes)})`);
+    // Forking is async on GitHub's side - poll until the new repo actually resolves.
+    for (let i = 0; i < 10 && !forkRes.ok; i++) {
+      await new Promise((r) => setTimeout(r, 1500));
+      forkRes = await ghApi(token, "GET", `/repos/${forkOwner}/${PR_UPSTREAM_REPO}`);
+    }
+    if (!forkRes.ok) throw new Error("Fork was created but isn't ready yet - wait a few seconds and try again");
+  } else if (!forkRes.ok) {
+    throw new Error(`Could not check for an existing fork (${await ghErrorMessage(forkRes)})`);
+  }
+  return forkOwner;
+}
+
+async function createBranchFromUpstreamMain(token, forkOwner, branchName) {
+  const refRes = await ghApi(token, "GET", `/repos/${PR_UPSTREAM_OWNER}/${PR_UPSTREAM_REPO}/git/refs/heads/main`);
+  if (!refRes.ok) throw new Error(`Could not read upstream main (${await ghErrorMessage(refRes)})`);
+  const { object } = await refRes.json();
+  const createRes = await ghApi(token, "POST", `/repos/${forkOwner}/${PR_UPSTREAM_REPO}/git/refs`, {
+    ref: `refs/heads/${branchName}`,
+    sha: object.sha,
+  });
+  if (!createRes.ok) throw new Error(`Could not create a branch on your fork (${await ghErrorMessage(createRes)})`);
+}
+
+function bytesToBase64(bytes) {
+  let binary = "";
+  for (let i = 0; i < bytes.length; i++) binary += String.fromCharCode(bytes[i]);
+  return btoa(binary);
+}
+
+async function putFileOnBranch(token, forkOwner, branchName, path, bytes, message) {
+  const res = await ghApi(token, "PUT", `/repos/${forkOwner}/${PR_UPSTREAM_REPO}/contents/${path}`, {
+    message,
+    content: bytesToBase64(bytes),
+    branch: branchName,
+  });
+  if (!res.ok) throw new Error(`Could not write ${path} (${await ghErrorMessage(res)})`);
+}
+
+async function openPullRequestForEntries(token, entries, onProgress) {
+  if (!entries.length) throw new Error("No entries to submit");
+  const forkOwner = await ensureFork(token, onProgress);
+  const branchName = `add-entries-${Date.now()}`;
+  onProgress(`Branching ${branchName} from upstream main...`);
+  await createBranchFromUpstreamMain(token, forkOwner, branchName);
+
+  const enc = new TextEncoder();
+  let done = 0;
+  const totalFiles = entries.reduce((n, e) => n + 1 + (e.iconBytes ? 1 : 0), 0);
+  for (const entry of entries) {
+    onProgress(`Committing ${entry.fileName} (${++done}/${totalFiles})...`);
+    await putFileOnBranch(token, forkOwner, branchName, `apps/vita/${entry.fileName}`, enc.encode(entry.json), `Add ${entry.fileName}`);
+    if (entry.iconBytes) {
+      const iconFile = entry.fileName.replace(/\.json$/, ".png");
+      onProgress(`Committing ${iconFile} (${++done}/${totalFiles})...`);
+      await putFileOnBranch(token, forkOwner, branchName, `icons_vita/${iconFile}`, entry.iconBytes, `Add icon for ${entry.fileName}`);
+    }
+  }
+
+  onProgress("Opening the pull request...");
+  const names = entries.map((e) => JSON.parse(e.json).name);
+  const prRes = await ghApi(token, "POST", `/repos/${PR_UPSTREAM_OWNER}/${PR_UPSTREAM_REPO}/pulls`, {
+    title: `Add ${entries.length} homebrew ${entries.length === 1 ? "entry" : "entries"}: ${names.join(", ")}`,
+    head: `${forkOwner}:${branchName}`,
+    base: "main",
+    body: `Opened automatically from the developer wizard.\n\nEntries:\n${names.map((n) => `- ${n}`).join("\n")}`,
+  });
+  if (!prRes.ok) throw new Error(`Could not open the pull request (${await ghErrorMessage(prRes)})`);
+  return (await prRes.json()).html_url;
+}
+
 /* ---------------- id suggestion ---------------- */
 
 let liveIds = new Set();
@@ -235,7 +343,7 @@ function defaultDescription(sourceLabel) {
   return sourceLabel ? `Imported from ${sourceLabel}. Describe what it does here.` : "What it does, in a couple of sentences.";
 }
 
-function buildEntryObject({ id, sfo, repo, asset, sourceLabel, aiUsed, description }) {
+function buildEntryObject({ id, sfo, repo, asset, directUrl, directAuthor, directVersion, sourceLabel, aiUsed, description }) {
   const name = sfo.TITLE || "My Homebrew";
   const titleid = sfo.TITLE_ID || "MYHB00001";
   const slug = slugify(name);
@@ -243,11 +351,13 @@ function buildEntryObject({ id, sfo, repo, asset, sourceLabel, aiUsed, descripti
   return {
     id,
     name,
-    author: repo ? repo.owner : "Your Name",
+    author: repo ? repo.owner : (directAuthor || "Your Name"),
     category: "game",
     platform: "vita",
     titleid,
-    ...(repo ? { repo: `${repo.owner}/${repo.repo}`, asset: asset || "*.vpk" } : { direct_url: "https://.../your-file.vpk", version: sfo.APP_VER || "v.1.0" }),
+    ...(repo
+      ? { repo: `${repo.owner}/${repo.repo}`, asset: asset || "*.vpk" }
+      : { direct_url: directUrl || "https://.../your-file.vpk", version: directVersion || sfo.APP_VER || "v.1.0" }),
     prerelease: false,
     icon: `${paddedId}-${slug}.png`,
     description: description || defaultDescription(sourceLabel),
@@ -396,46 +506,110 @@ async function readIcon(file) {
 
   // Rebuilt fresh for every entry; carried across the repo -> vpk -> icon
   // steps, then pushed into `session.entries` once confirmed.
-  let current = { repo: null, asset: null, sfo: {}, icon: null };
+  let current = { repo: null, asset: null, sfo: {}, icon: null, directUrl: null, directAuthor: null, directVersion: null };
   const session = { entries: [], usedIds: new Set() };
 
   function resetCurrent() {
-    current = { repo: null, asset: null, sfo: {}, icon: null };
+    current = { repo: null, asset: null, sfo: {}, icon: null, directUrl: null, directAuthor: null, directVersion: null };
     $("w-repo-url").value = "";
+    $("w-repo-next").textContent = "Look up latest release";
+    $("w-direct-fields").hidden = true;
+    $("w-direct-author").value = "";
+    $("w-direct-version").value = "";
     $("w-icon-preview").hidden = true;
     $("w-icon-preview").removeAttribute("src");
     $("w-icon-label").textContent = "Drop a .png here, or click to choose one";
   }
 
-  /* ---- step 1: repo ---- */
+  /* ---- step 1: repo (GitHub) or direct external link ---- */
+  // A URL pointing at one specific file (path ends in .vpk/.zip, e.g. a
+  // /releases/download/TAG/NAME.vpk link) pins that exact asset - treat it as
+  // a direct link even when the host is github.com. Resolving it as "look up
+  // this repo's latest release" is wrong whenever the repo isn't the
+  // homebrew's own repo (a multi-game mirror repo, a fork's release page,
+  // etc): the latest release there can be a different, unrelated game.
+  function isSpecificAssetUrl(raw) {
+    return /\.(vpk|zip)(?:[?#].*)?$/i.test(raw);
+  }
+
   async function handleRepoNext() {
-    const parsed = parseRepoUrl($("w-repo-url").value);
-    if (!parsed) { setStatus("That doesn't look like a GitHub repo (owner/repo)", true); return; }
-    setStatus(`Looking up ${parsed.owner}/${parsed.repo} releases...`);
-    try {
-      const { assets } = await fetchLatestVpkAssets(parsed.owner, parsed.repo);
-      const vpkAssets = assets.filter((a) => /\.vpk$/i.test(a.name));
-      const chosen = (vpkAssets.length ? vpkAssets : assets)[0];
-      current.repo = parsed;
-      current.asset = vpkAssets.length === 1 ? "*.vpk" : chosen.name;
+    const raw = $("w-repo-url").value.trim();
+    const parsed = !isSpecificAssetUrl(raw) && parseRepoUrl(raw);
 
-      // Works from any origin only sometimes (GitHub doesn't send CORS
-      // headers for release-asset bytes) - try, but the vpk step covers it
-      // either way, so a failure here is silent and not an error state.
+    if (parsed) {
+      $("w-direct-fields").hidden = true;
+      setStatus(`Looking up ${parsed.owner}/${parsed.repo} releases...`);
       try {
-        const source = await UrlSource.open(chosen.browser_download_url);
-        const sfo = await readVpkSfo(source);
-        if (sfo.TITLE_ID) current.sfo = sfo;
-      } catch (_) { /* expected most of the time - see the vpk step */ }
+        const { assets } = await fetchLatestVpkAssets(parsed.owner, parsed.repo);
+        const vpkAssets = assets.filter((a) => /\.vpk$/i.test(a.name));
+        const chosen = (vpkAssets.length ? vpkAssets : assets)[0];
+        current.repo = parsed;
+        current.asset = vpkAssets.length === 1 ? "*.vpk" : chosen.name;
+        current.directUrl = null;
+        current.directAuthor = null;
+        current.directVersion = null;
 
-      setStatus(current.sfo.TITLE_ID
-        ? `Got ${chosen.name} - title id read directly. Confirm with the vpk below, or skip ahead.`
-        : `Found ${chosen.name}. Drop it (or any Vita vpk) in the next step to read its title id.`);
-      $("w-vpk-hint-name").textContent = chosen.name;
-      showPanel("vpk");
-    } catch (error) {
-      setStatus(error.message || "Could not analyze this repo", true);
+        // Works from any origin only sometimes (GitHub doesn't send CORS
+        // headers for release-asset bytes) - try, but the vpk step covers it
+        // either way, so a failure here is silent and not an error state.
+        try {
+          const source = await UrlSource.open(chosen.browser_download_url);
+          const sfo = await readVpkSfo(source);
+          if (sfo.TITLE_ID) current.sfo = sfo;
+        } catch (_) { /* expected most of the time - see the vpk step */ }
+
+        setStatus(current.sfo.TITLE_ID
+          ? `Got ${chosen.name} - title id read directly. Confirm with the vpk below, or skip ahead.`
+          : `Found ${chosen.name}. Drop it (or any Vita vpk) in the next step to read its title id.`);
+        $("w-vpk-hint-name").textContent = chosen.name;
+        showPanel("vpk");
+      } catch (error) {
+        setStatus(error.message || "Could not analyze this repo", true);
+      }
+      return;
     }
+
+    if (!/^https?:\/\//i.test(raw)) {
+      setStatus("That doesn't look like a GitHub repo (owner/repo) or a direct .vpk link", true);
+      return;
+    }
+
+    // A direct link to one specific file - either not on GitHub at all, or a
+    // GitHub URL that already names an exact asset. Either way there's no
+    // "look up the latest release" to lean on, so verify the link actually
+    // points at a downloadable vpk, then ask for the owner/version through
+    // the form below instead of assuming them.
+    current.repo = null;
+    current.asset = null;
+    setStatus(`Verifying ${raw} is a downloadable vpk...`);
+    try {
+      const source = await UrlSource.open(raw);
+      const sfo = await readVpkSfo(source);
+      if (!sfo.TITLE_ID) throw new Error("param.sfo found, but it has no TITLE_ID");
+      current.sfo = sfo;
+      current.directUrl = raw;
+      $("w-direct-version").value = sfo.APP_VER || "";
+      $("w-direct-fields").hidden = false;
+      $("w-direct-author").focus();
+      setStatus(`Verified ${sfo.TITLE || "vpk"} (${sfo.TITLE_ID}). Fill in the author (and version, if not already right) below.`);
+    } catch (error) {
+      setStatus(`${error.message || "Could not verify this link"} - some hosts block direct downloads from a browser (CORS). Use "Skip" below and drop the .vpk file by hand instead.`, true);
+    }
+  }
+
+  function handleDirectNext() {
+    const author = $("w-direct-author").value.trim();
+    if (!author) { setStatus("Enter an author name first", true); return; }
+    current.directAuthor = author;
+    // Leave unset rather than defaulting to "v.1.0" here: when verification
+    // never ran (the Skip path), the real version usually isn't known yet -
+    // it shows up once a vpk is dropped in the next step - so buildEntryObject's
+    // own sfo.APP_VER fallback needs the chance to win instead of this
+    // already having claimed a value.
+    current.directVersion = $("w-direct-version").value.trim() || null;
+    setStatus("");
+    $("w-vpk-hint-name").textContent = (current.directUrl && current.directUrl.split("/").pop()) || ".vpk";
+    showPanel("vpk");
   }
 
   /* ---- step 2: vpk ---- */
@@ -489,7 +663,7 @@ async function readIcon(file) {
 
     const sourceLabel = current.repo
       ? `${current.repo.owner}/${current.repo.repo}`
-      : (current.sfo.TITLE ? current.sfo.TITLE : "a local vpk");
+      : (current.directAuthor || current.sfo.TITLE || "a local vpk");
     $("w-description").value = defaultDescription(sourceLabel);
 
     const suggested = await suggestNextId(session.usedIds);
@@ -508,6 +682,9 @@ async function readIcon(file) {
       sfo: current.sfo,
       repo: current.repo,
       asset: current.asset,
+      directUrl: current.directUrl,
+      directAuthor: current.directAuthor,
+      directVersion: current.directVersion,
       sourceLabel,
       aiUsed: $("w-ai").checked,
       description: $("w-description").value,
@@ -657,10 +834,55 @@ async function readIcon(file) {
     URL.revokeObjectURL(url);
   }
 
+  async function handleOpenPr() {
+    const token = $("w-gh-token").value.trim();
+    if (!token) { setStatus("Paste a GitHub token first", true); return; }
+    const prStatus = $("w-pr-status");
+    prStatus.hidden = false;
+    prStatus.classList.remove("generator-status-error");
+    $("w-open-pr").disabled = true;
+    try {
+      const url = await openPullRequestForEntries(token, session.entries, (msg) => { prStatus.textContent = msg; });
+      prStatus.innerHTML = `Pull request opened: <a href="${url}" target="_blank" rel="noopener">${url}</a>`;
+    } catch (error) {
+      prStatus.textContent = error.message || "Could not open the pull request";
+      prStatus.classList.add("generator-status-error");
+    } finally {
+      $("w-open-pr").disabled = false;
+    }
+  }
+
   /* ---- wiring ---- */
   $("w-repo-next").addEventListener("click", handleRepoNext);
   $("w-repo-url").addEventListener("keydown", (event) => { if (event.key === "Enter") handleRepoNext(); });
-  $("w-repo-skip").addEventListener("click", () => { current.repo = null; current.asset = null; setStatus(""); showPanel("vpk"); $("w-vpk-hint-name").textContent = ".vpk"; });
+  $("w-repo-url").addEventListener("input", () => {
+    const raw = $("w-repo-url").value.trim();
+    const isRepoRef = raw && !isSpecificAssetUrl(raw) && parseRepoUrl(raw);
+    $("w-repo-next").textContent = raw && !isRepoRef ? "Verify link" : "Look up latest release";
+    $("w-direct-fields").hidden = true;
+  });
+  $("w-direct-next").addEventListener("click", handleDirectNext);
+  $("w-direct-author").addEventListener("keydown", (event) => { if (event.key === "Enter") handleDirectNext(); });
+  $("w-direct-version").addEventListener("keydown", (event) => { if (event.key === "Enter") handleDirectNext(); });
+  $("w-repo-skip").addEventListener("click", () => {
+    current.repo = null;
+    current.asset = null;
+    // Keep whatever was typed if it's already a URL (e.g. a GitHub release
+    // asset link that failed verification because that host doesn't send
+    // CORS headers) - no reason to make the user re-paste it into the JSON
+    // by hand just because we couldn't fetch it ourselves.
+    const raw = $("w-repo-url").value.trim();
+    current.directUrl = /^https?:\/\//i.test(raw) ? raw : null;
+    // Same form as a verified direct link, just without the vpk download to
+    // back it up - author still has to come from somewhere other than a
+    // "Your Name" placeholder nobody remembers to replace.
+    $("w-direct-version").value = current.sfo.APP_VER || "";
+    $("w-direct-fields").hidden = false;
+    $("w-direct-author").focus();
+    setStatus(current.directUrl
+      ? "Couldn't verify that link automatically - fill in the author (and version, if not already right) below, then continue."
+      : "Fill in the author (and version, if you know it) below, then continue - repo/asset can still be set by hand afterwards in the JSON.");
+  });
 
   const vpkZone = $("w-dropzone-vpk"), vpkInput = $("w-vpk-file");
   vpkZone.addEventListener("click", () => vpkInput.click());
@@ -713,6 +935,7 @@ async function readIcon(file) {
 
   $("w-add-more").addEventListener("click", () => { resetCurrent(); showPanel("repo"); });
   $("w-download").addEventListener("click", downloadPackage);
+  $("w-open-pr").addEventListener("click", handleOpenPr);
   $("w-cancel").addEventListener("click", cancelToList);
 
   loadLiveIds();

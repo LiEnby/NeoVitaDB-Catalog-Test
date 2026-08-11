@@ -96,10 +96,16 @@
       </div>
 
       <div class="wizard-panel" data-panel="repo">
-        <p class="wizard-hint">Paste the GitHub repo that publishes this homebrew.</p>
+        <p class="wizard-hint">Paste the GitHub repo that publishes this homebrew, or a direct link to its <strong>.vpk</strong> if it isn't hosted on GitHub.</p>
         <div class="repo-input-row">
-          <input type="text" id="w-repo-url" class="native-select" placeholder="github.com/owner/repo" />
+          <input type="text" id="w-repo-url" class="native-select" placeholder="github.com/owner/repo or https://.../game.vpk" />
           <button id="w-repo-next" class="reset-btn">Look up latest release</button>
+        </div>
+        <div id="w-direct-fields" class="wizard-subfield" hidden>
+          <p class="wizard-hint">That's not a GitHub link, so a couple of things GitHub would normally tell us are missing - fill them in:</p>
+          <input type="text" id="w-direct-author" class="native-select" placeholder="Author name" />
+          <input type="text" id="w-direct-version" class="native-select" placeholder="Version (e.g. v1.0)" />
+          <button id="w-direct-next" class="reset-btn">Continue -&gt;</button>
         </div>
         <button id="w-repo-skip" class="wizard-skip">Skip - I'll fill repo/asset in by hand</button>
       </div>
@@ -156,7 +162,7 @@
         </div>
 
         <textarea id="generator-json" class="guide-code generator-textarea" spellcheck="false"></textarea>
-        <p class="generator-warning"><strong>Before opening a PR:</strong> double-check <code>id</code> isn't already taken by a just-merged entry, and fill in <code>author</code> / <code>category</code> by hand.</p>
+        <p class="generator-warning"><strong>Before opening a PR:</strong> double-check <code>id</code> isn't already taken by a just-merged entry, and fill in <code>category</code> by hand.</p>
         <div class="wizard-panel-actions">
           <button id="generator-copy" class="reset-btn">Copy JSON</button>
           <button id="w-add-entry" class="reset-btn">Add this entry -&gt;</button>
@@ -169,6 +175,14 @@
         <div class="wizard-panel-actions">
           <button id="w-add-more" class="reset-btn">+ Add another entry</button>
           <button id="w-download" class="reset-btn">Download package (zip)</button>
+        </div>
+
+        <div class="wizard-req-block">
+          <p class="wizard-hint">Or open a pull request directly against <code>robin994/NeoVitaDB-Catalog-Test</code> - forks the repo to your account (or reuses your existing fork), commits each entry there, and opens the PR for you.</p>
+          <p class="wizard-hint">Needs a GitHub token with <code>public_repo</code> scope (classic, <a href="https://github.com/settings/tokens/new?scopes=public_repo&description=NeoVitaDB%20catalog%20wizard" target="_blank" rel="noopener">create one</a>) or Contents + Pull requests read/write on this repo (fine-grained). Kept in memory for this page load only - never saved, never sent anywhere but api.github.com.</p>
+          <input type="password" id="w-gh-token" class="native-select" placeholder="ghp_... (GitHub personal access token)" autocomplete="off" />
+          <button id="w-open-pr" class="reset-btn">Open pull request -&gt;</button>
+          <p id="w-pr-status" class="generator-status" hidden></p>
         </div>
       </div>
 
