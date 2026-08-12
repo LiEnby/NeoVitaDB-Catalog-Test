@@ -48,6 +48,7 @@ jobs:
           cp site/developers.html dist/developers.html
           cp site/style.css dist/style.css
           cp site/script.js dist/script.js
+          cp site/add-entry.js dist/add-entry.js
 
       - name: Stage icons alongside the catalog
         # icons_vita/ publishes to dist/icons/ (unchanged path, kept exactly
